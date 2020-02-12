@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Controls.css';
+import {
+  drinkCoffee,
+  eatSnack,
+  takeNap,
+  study
+} from '../../actions/moodActions';
 
-const Controls = ({ actions, handleSelection }) => (
-  <section className={styles.Controls}>
-    {actions.map(({ name, text, count }) => (
-      <button key={name} onClick={() => handleSelection(name)}>
-        {text || name} {!!count && `- ${count}`}
-      </button>
-    ))}
-  </section>
-);
+const Controls = ({ dispatch }) => {
+  return (
+    <section className={styles.Controls}>
+      <button onClick={() => dispatch(drinkCoffee())}>Drink Coffee</button>
+      <button onClick={() => dispatch(eatSnack())}>Snack</button>
+      <button onClick={() => dispatch(takeNap())}>Nap</button>
+      <button onClick={() => dispatch(study())}>Study</button>
+    </section>
+  );
+};
 
 Controls.propTypes = {
-  actions: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    text: PropTypes.string
-  })).isRequired,
-  handleSelection: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired
 };
 
 export default Controls;
