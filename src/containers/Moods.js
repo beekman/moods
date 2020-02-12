@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React, { useReducer } from 'react';
 import Controls from '../components/controls/Controls';
 import Face from '../components/face/Face';
-
-const actions = [
-  { name: 'DRINK_COFFEE', text: 'Drink Coffee', stateName: 'coffees' },
-  { name: 'EAT_SNACK', text: 'Snack', stateName: 'snacks' },
-  { name: 'TAKE_NAP', text: 'Nap', stateName: 'naps' },
-  { name: 'STUDY', text: 'Study', stateName: 'studies' },
-];
+import moodActions from '../actions/moodActions';
+import moodSelector from '../selectors/moodSelectors';
+import moodReducer from '../reducers/moodReducer';
 
 export const isTired = state => state.coffees < 1 && state.naps < 1;
 export const isHyper = state => state.coffees > 3;
@@ -31,7 +27,7 @@ export default class Moods extends Component {
     snacks: 0,
     naps: 0,
     studies: 0
-  }
+  };
 
   handleSelection = name => {
     switch(name) {
@@ -50,7 +46,7 @@ export default class Moods extends Component {
       default:
         console.log(`unhandled name: ${name}`);
     }
-  }
+  };
 
   render() {
     const face = getFace(this.state);
@@ -61,7 +57,7 @@ export default class Moods extends Component {
 
     return (
       <>
-        <Controls actions={controlActions} handleSelection={this.handleSelection}/>
+        <Controls actions={controlActions} handleSelection={this.handleSelection} />
         <Face emoji={face} />
       </>
     );
