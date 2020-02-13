@@ -5,7 +5,8 @@ import {
   STUDY
 } from '../actions/moodActions';
 
-export default function reducer(state, action) {
+
+export default function moodReducer(state, action) {
   switch(action.type) {
     case DRINK_COFFEE:
       return { ...state, coffees: state.coffees + 1 };

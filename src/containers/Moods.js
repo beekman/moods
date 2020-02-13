@@ -14,12 +14,6 @@ const Moods = () => {
 
   const [moodState, dispatch] = useReducer(moodReducer, initialState);
   const face = getFace(moodState);
-  
-  // const face = getFace(this.state);
-  // const controlActions = actions.map(action => ({
-  //   ...action,
-  //   count: this.state[action.stateName]
-  // }));
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Controls.css';
 import {
@@ -20,7 +20,7 @@ const Controls = ({ dispatch }) => {
 };
 
 Controls.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func
 };
 
 export default Controls;
