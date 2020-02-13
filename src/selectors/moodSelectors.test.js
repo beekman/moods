@@ -42,22 +42,24 @@ describe('Moods', () => {
       expect(getFace({ coffees: 4, snacks: 0 })).toEqual('🤮');
     });
 
-    it('is sleeping if tired', () => {
-      expect(getFace({ coffees: 4, snacks: 0 })).toEqual('🤮');
+    it('is yawning', () => {
+      expect(getFace({ studies: 0, snacks: 1, coffees: 0, naps: 0 })).toEqual('🥱');
     });
 
     it('is crazy if hyper and not hungry', () => {
       expect(getFace({ coffees: 4, naps: 0, snacks: 2, studies: 0 })).toEqual('😱');
     });
 
-    it('is mindblown if educated', () => {
-      expect(getFace({ coffees: 1, naps: 0, snacks: 1, studies: 3 })).toEqual('😲');
+    it('is graduate if educated, fed, and caffeinated', () => {
+      expect(getFace({ coffees: 1, naps: 0, snacks: 1, studies: 3 })).toEqual('🤓');
     });
 
     it('is angry if hungry', () => {
       expect(getFace({ coffees: 1, naps: 0, snacks: 0, studies: 0 })).toEqual('😡');
     });
-
+    it('is cuckoo if educated and hungry', () => {
+      expect(getFace({ coffees: 0, naps: 0, snacks: 0, studies: 5 })).toEqual('🥴');
+    });
     it('is happy if not tired, hungry, educated, or hungry', () => {
       expect(getFace({ coffees: 1, naps: 0, snacks: 1, studies: 0 })).toEqual('😀');
     });
