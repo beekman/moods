@@ -4,8 +4,6 @@ import {
   TAKE_NAP,
   STUDY
 } from '../actions/moodActions';
-
-
 export default function moodReducer(state, action) {
   switch(action.type) {
     case DRINK_COFFEE:
@@ -17,6 +15,7 @@ export default function moodReducer(state, action) {
     case STUDY:
       return { ...state, studies: state.studies + 1 };
     default:
-      return state;
+      // eslint-disable-next-line no-console
+      console.log(`unhandled type: ${action.type}`);
   }
 }
